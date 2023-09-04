@@ -1,0 +1,24 @@
+{% extends 'aplicacion/base.html' %}
+{% load static %}
+
+{% block barra %}
+    <li class="nav-item"><a class="nav-link" href="{% url 'materias' %}">Atrás&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-arrow-left fa-beat" style="color: #faea05;"title="Atras"></i></a></li>
+{% endblock barra %}
+
+{% block titulo %}
+    <p class="lead">Materias</p>
+{% endblock titulo %}
+
+{% block contenido %}
+    <br>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="text-center">
+            <h3>Esta seguro de eliminar la materia? <p style='color:red'>{{ object }}</p></h3>
+        </div>
+        <div class="text-center">
+            <input type="submit" class ='btn btn-primary btn-block' value="Confirmar">
+        </div>
+    </form>
+    <br>
+{% endblock contenido %}

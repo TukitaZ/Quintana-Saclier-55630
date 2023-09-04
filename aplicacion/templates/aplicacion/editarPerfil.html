@@ -1,0 +1,25 @@
+{% extends 'aplicacion/base.html' %}
+{% load static %}
+
+{% block barra %}
+    <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Atrás&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-arrow-left fa-beat" style="color: #faea05;"title="Atras"></i></a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'agregar_avatar' %}">Cambiar Avatar&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-arrow-right fa-beat" style="color: #faea05;"title="Atras"></i></a></li>
+
+{% endblock barra %}
+
+{% block titulo %}
+    <p class="lead">Editar perfil</p>
+{% endblock titulo %}
+
+{% block contenido %}
+    <br>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <br>
+        <input type="submit" value="Actualizar perfil"> 
+    </form>
+    <br>
+{% endblock contenido %}

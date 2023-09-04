@@ -1,0 +1,60 @@
+{% extends 'aplicacion/base.html' %}
+{% load static %}
+
+{% block barra %}
+    <li class="nav-item"><a class="nav-link" href="{% url 'buscar_director' %}">Buscar&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-magnifying-glass fa-beat" style="color: #faea05;"title="Buscar Director"></i></a></li>
+{% endblock barra %}
+
+{% block titulo %}
+    <p class="lead">Directores</p>
+{% endblock titulo %}
+    
+
+{% block contenido %}
+
+    <table>
+        <tr>
+            <td width="150"><h2><i>Directores</i></h2></td>
+            <td>
+                <a href="{% url 'create_director' %}"
+                class="btn btn-primary btn-sm"
+                ><i class="fa fa-plus fa-lg" title="Agregar Director"></i>
+                </a>
+            </td>
+        </tr>
+    </table>        
+    <table class="table table-striped">
+        <thead>
+             <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Turno</th>
+             </tr>
+        </thead>
+        <tbody>
+        {% for d in director_list %}
+        <tr>
+            <td>{{ d.nombre }}</td>
+            <td>{{ d.apellido }}</td>
+            <td>{{ d.turno }}</td>
+            <td>
+                <a
+                    href="{% url 'update_director' pk=d.pk %}"
+                    class="btn btn-primary"
+                    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                    ><i class="fa fa-edit fa-sm" title="Editar"></i>
+                </a>
+                <a
+                    href="{% url 'delete_director' pk=d.pk %}"
+                    class="btn btn-danger"
+                    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                    ><i class="fa fa-trash fa-sm" title="Borrar"></i>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+    
+        
+{% endblock contenido %}

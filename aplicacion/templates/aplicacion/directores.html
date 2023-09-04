@@ -1,0 +1,40 @@
+{% extends 'aplicacion/base.html' %}
+{% load static %}
+
+{% block barra %}
+    <li class="nav-item"><a class="nav-link" href="{% url 'directores' %}">Atrás&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-arrow-left fa-beat" style="color: #faea05;"title=""></i></a></li>
+{% endblock barra %}
+    
+{% block titulo %}
+    <p class="lead">Directores</p>
+{% endblock titulo %}
+    
+
+{% block contenido %}
+    <table>
+        <tr>
+            <td width="150"><h2><i>Directores</i></h2></td>
+        </tr>
+    </table>        
+
+    <table class="table table-striped">
+        <thead>
+             <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Turno</th>
+             </tr>
+        </thead>
+        <tbody>
+            {% for d in directores %}
+                <tr>
+                    <td>{{ d.nombre }}</td>
+                    <td>{{ d.apellido }}</td>
+                    <td>{{ d.turno }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+        
+{% endblock contenido %}

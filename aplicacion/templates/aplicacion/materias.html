@@ -1,0 +1,38 @@
+{% extends 'aplicacion/base.html' %}
+{% load static %}
+
+{% block barra %}
+    <li class="nav-item"><a class="nav-link" href="{% url 'materias' %}">Atrás&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-arrow-left fa-beat" style="color: #faea05;"title=""></i></a></li>
+{% endblock barra %}
+    
+{% block titulo %}
+    <p class="lead">Materias</p>
+{% endblock titulo %}
+    
+
+{% block contenido %}
+    <table>
+        <tr>
+            <td width="150"><h2><i>Materias</i></h2></td>
+        </tr>
+    </table>        
+
+    <table class="table table-striped">
+        <thead>
+             <tr>
+                <th>Materia</th>
+                <th>Comision</th>
+             </tr>
+        </thead>
+        <tbody>
+            {% for m in materias %}
+                <tr>
+                    <td>{{ m.nombre }}</td>
+                    <td>{{ m.comision }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+        
+{% endblock contenido %}

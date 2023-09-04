@@ -1,0 +1,21 @@
+{% extends 'aplicacion/base.html' %}
+{% load static %}
+
+{% block barra %}
+    <li class="nav-item"><a class="nav-link" href="{% url 'alumnos' %}">Atrás&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-arrow-left fa-beat" style="color: #faea05;"title=""></i></a></li>
+{% endblock barra %}
+
+{% block titulo %}
+    <p class="lead">Buscar Alumnos</p>
+{% endblock titulo %}
+
+{% block contenido %}
+    <form action="/buscar3" method="get">
+        {% csrf_token %}
+        <br>
+        <br>
+        <p> &nbsp;&nbsp;Ingrese patron a buscar : <input type="text" name="buscar" id="buscar"> <input type="submit" value="Enviar"> </p>  
+        <br>
+        <br>
+    </form>
+{% endblock contenido %}

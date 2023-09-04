@@ -1,0 +1,64 @@
+{% extends 'aplicacion/base.html' %}
+{% load static %}
+
+{% block barra %}
+    <li class="nav-item"><a class="nav-link" href="{% url 'buscar_maestro' %}">Buscar&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-magnifying-glass fa-beat" style="color: #faea05;"title="Buscar Alumno"></i></a></li>
+{% endblock barra %}
+
+{% block titulo %}
+    <p class="lead">Maestros</p>
+{% endblock titulo %}
+    
+
+{% block contenido %}
+    <table>
+        <tr>
+            <td width="150"><h2><i>Maestros</i></h2></td>
+            <td>
+                <a href="{% url 'create_maestro' %}"
+                class="btn btn-primary btn-sm"
+                ><i class="fa fa-plus fa-lg" title="Agregar Maestro"></i>
+                </a>
+            </td>
+        </tr>
+    </table>        
+    <table class="table table-striped">
+        <thead>
+             <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Materia que enseña</th>
+             </tr>
+        </thead>
+        <tbody>
+        {% for m in maestro_list %}
+        <tr>
+            <td>{{ m.nombre }}</td>
+            <td>{{ m.apellido }}</td>
+            <td>
+                {% for materia in m.profesion.all %}
+                        {{ materia.nombre }}
+                        {% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </td>
+            <td>
+                <a
+                    href="{% url 'update_maestro' pk=m.pk %}"
+                    class="btn btn-primary"
+                    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                    ><i class="fa fa-edit fa-sm" title="Editar"></i>
+                </a>
+                <a
+                    href="{% url 'delete_alumno' pk=m.pk %}"
+                    class="btn btn-danger"
+                    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                    ><i class="fa fa-trash fa-sm" title="Borrar"></i>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+    
+        
+{% endblock contenido %}
